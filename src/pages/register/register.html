@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Register</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="login-content" padding>
+    <div class="login-box">
+
+        <ion-row>
+            <ion-col>
+                <ion-list inset>
+
+                    <ion-item>
+                        <ion-input type="text" placeholder="Email" [(ngModel)]="registerCredentials.email" required></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-input type="password" placeholder="Password" [(ngModel)]="registerCredentials.password" required></ion-input>
+                    </ion-item>
+
+                    <ion-item style="padding-left: 8px">
+                        <ion-label>Role</ion-label>
+                        <ion-select [(ngModel)]="registerCredentials.type">
+                            <ion-option *ngFor="let role of roles" value={{role}}>{{role}}</ion-option>
+                        </ion-select>
+                    </ion-item>
+
+                </ion-list>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col class="signup-col">
+                <button ion-button class="submit-btn" full type="submit" (click)="register()">Register</button>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>

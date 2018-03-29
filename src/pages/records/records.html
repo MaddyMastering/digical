@@ -1,0 +1,12 @@
+<ion-content>
+    <ion-item-group>
+        <ion-item-divider color="light">Hospitals
+            <ion-icon item-end name="add-circle" (click)="goTo('hospital')"></ion-icon>
+        </ion-item-divider>
+        <ion-item *ngFor="let hospital of hospitals">{{hospital}}</ion-item>
+        <ion-item-divider color="light">Doctors
+            <ion-icon item-end name="add-circle" (click)="goTo('doctor')"></ion-icon>
+        </ion-item-divider>
+        <ion-item *ngFor="let doctor of doctors">{{doctor}}</ion-item>
+    </ion-item-group>
+</ion-content>

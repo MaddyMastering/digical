@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Profile
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-row>
+        <ion-col (click)="updateProfile(profile)" *ngFor="let profile of profiles" col-4 text-center>
+            <div class="flexcontainer">
+                <img ion-fab [src]="profile.image" [ngClass]="{ 'selected': profile.name === currentProfile.name  }" />
+            </div>
+            <ion-label>{{profile.name}}</ion-label>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col text-center>
+            <button ion-button>Add Profile</button>
+        </ion-col>
+    </ion-row>
+</ion-content>

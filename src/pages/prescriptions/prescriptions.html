@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Prescriptions
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-item *ngFor="let prescription of prescriptions; let i=index;" text-wrap [ngClass]="{active: isGroupShown(i)}">
+        <h2>{{prescription.hospital}}</h2>
+        <p>{{prescription.doctor}} • {{prescription.timestamp | date}}</p>
+        <button (click)="toggleGroup(i)" *ngIf="!isGroupShown(i)" item-end ion-button clear>View</button>
+        <ion-icon color="danger" item-end name="alert" *ngIf="!prescription.approved && !isGroupShown(i)"></ion-icon>
+        <div *ngIf="isGroupShown(i)">
+            <br />
+            <table style="width: 100%;">
+                <thead>
+                    <tr>
+                        <td>
+                            <b>Name</b>
+                        </td>
+                        <td>
+                            <b>Quantity</b>
+                        </td>
+                        <td>
+                            <b>Frequency</b>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of prescription.contents">
+                        <td>{{item.name}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.frequency}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <div *ngIf="!prescription.approved">
+                <ion-icon style="font-size: 2.2em" color="secondary" name="checkmark-circle"></ion-icon>
+                <ion-icon style="font-size: 2.2em" color="danger" name="close-circle"></ion-icon>
+            </div>
+        </div>
+    </ion-item>
+</ion-content>

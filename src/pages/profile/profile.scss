@@ -1,0 +1,16 @@
+page-profile {
+    .flexcontainer {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+    }
+
+    .selected {
+        border: 2px solid green;
+    }
+}
