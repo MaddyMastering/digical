@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, MenuController, Events, Tabs } from 'ionic-angular';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 
 import { ProfilePage } from '../profile/profile';
 import { AuthService } from '../../providers/AuthProvider';
@@ -55,6 +54,7 @@ export class HomePage {
 
 	public logout() {
 		this.auth.logout().subscribe(() => {
+			this.menuCtrl.enable(false)
 			this.nav.setRoot(LoginPage);
 		});
 	}

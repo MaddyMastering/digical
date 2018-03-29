@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, Events } from 'ionic-angular';
 import { AuthService } from '../../providers/AuthProvider';
-import { HomePage } from '../home/home';
 
 @Component({
     selector: 'page-records',
