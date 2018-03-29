@@ -4,8 +4,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Camera } from '@ionic-native/camera';
-import { QRScanner } from '@ionic-native/qr-scanner';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -31,6 +31,7 @@ import { QrScanPage } from '../pages/qr-home/qrScan';
     ],
     imports: [
         BrowserModule,
+        NgxQRCodeModule,
         IonicModule.forRoot(MyApp)
     ],
     bootstrap: [IonicApp],
@@ -47,10 +48,9 @@ import { QrScanPage } from '../pages/qr-home/qrScan';
     ],
     providers: [
         AuthService,
-        Camera,
+        BarcodeScanner,
         StatusBar,
         SplashScreen,
-        QRScanner,
         { provide: ErrorHandler, useClass: IonicErrorHandler }
     ]
 })

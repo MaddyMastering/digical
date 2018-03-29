@@ -1,7 +1,12 @@
 <ion-content>
     <ion-row>
         <ion-col col-12 text-center>
-            <button ion-button>SCAN</button>
+            <ion-card>
+                <ion-label>Scanned Data</ion-label>
+                <br />
+                {{scannedData | json}}
+            </ion-card>
+            <button ion-button (click)="scan()">SCAN</button>
         </ion-col>
     </ion-row>
 </ion-content>

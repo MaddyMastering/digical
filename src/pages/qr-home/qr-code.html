@@ -1,7 +1,9 @@
 <ion-content>
     <ion-row>
-        <ion-col col-12 text-center style="margin-top: 100px">
-            <img [src]="url" width="100" height="100" style="border: 1px solid grey" />
+        <ion-col col-12 style="margin-top: 20%">
+            <ion-card>
+                <ngx-qrcode [qrc-value]="url"></ngx-qrcode>
+            </ion-card>
         </ion-col>
     </ion-row>
 </ion-content>
