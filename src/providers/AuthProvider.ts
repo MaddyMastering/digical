@@ -19,6 +19,7 @@ export class Role {
     static DOCTOR: string = 'Doctor';
     static DRUG_ASSIST: string = 'Drug Assist';
     static INSURANCE_PROVIDER: string = 'Insurance Provider';
+    static HOSPITAL: string = 'Hospital';
 }
 
 @Injectable()
@@ -102,7 +103,7 @@ export class AuthService {
     }
 
     public getRoles(): Array<string> {
-        return [Role.USER, Role.DOCTOR, Role.DRUG_ASSIST, Role.INSURANCE_PROVIDER];
+        return [Role.USER, Role.DOCTOR, Role.DRUG_ASSIST, Role.INSURANCE_PROVIDER, Role.HOSPITAL];
     }
 
     public getProfiles(): Array<any> {
