@@ -18,3 +18,24 @@ page-home {
         font-weight: bold;
     }
 }
+
+page-home-doctor {
+    ion-label {
+        font-size: 14px;
+    }
+    
+    ion-col.profile {
+        height: 200px;
+        background-image: url("../assets/imgs/bg.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%
+    }
+
+    ion-label.profile-name {
+        position: absolute;
+        bottom: 3px;
+        left: 15px;
+        font-size: 17px;
+        font-weight: bold;
+    }
+}

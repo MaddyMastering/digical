@@ -3,6 +3,7 @@ import { NavController, LoadingController, Loading } from 'ionic-angular';
 import { AuthService, Role, User } from '../../providers/AuthProvider';
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
+import { HomeDoctorPage } from '../home/homeDoctor';
 
 @Component({
 	selector: 'page-login',
@@ -26,7 +27,12 @@ export class LoginPage {
 		this.loading.present();
 		this.auth.login(this.registerCredentials).subscribe(allowed => {
 			this.loading.dismiss();
-			this.nav.setRoot(HomePage);
+
+			if (this.registerCredentials.type === Role.USER) {
+				this.nav.setRoot(HomePage);
+			} else if (this.registerCredentials.type === Role.DOCTOR) {
+				this.nav.setRoot(HomeDoctorPage);
+			}
 		});
 	}
 }

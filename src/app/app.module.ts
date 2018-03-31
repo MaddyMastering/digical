@@ -8,7 +8,9 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 import { MyApp } from './app.component';
+import { DescriptionPage } from '../pages/description/description';
 import { HomePage } from '../pages/home/home';
+import { HomeDoctorPage } from '../pages/home/homeDoctor';
 import { LoginPage } from '../pages/login/login';
 import { ProfilePage } from '../pages/profile/profile';
 import { PrescriptionPage } from '../pages/prescriptions/prescriptions';
@@ -20,7 +22,9 @@ import { QrScanPage } from '../pages/qr-home/qrScan';
 @NgModule({
     declarations: [
         MyApp,
+        DescriptionPage,
         HomePage,
+        HomeDoctorPage,
         LoginPage,
         ProfilePage,
         PrescriptionPage,
@@ -37,7 +41,9 @@ import { QrScanPage } from '../pages/qr-home/qrScan';
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
+        DescriptionPage,
         HomePage,
+        HomeDoctorPage,
         LoginPage,
         ProfilePage,
         PrescriptionPage,

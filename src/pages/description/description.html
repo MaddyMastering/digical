@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            {{title}}
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card text-center>
+        <ion-icon name="contact" style="font-size: 5em"></ion-icon>
+        <ion-card-content>
+            <ion-card-title>
+                {{name}}
+            </ion-card-title>
+            <p>
+                Some fake Description. The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
+            </p>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
