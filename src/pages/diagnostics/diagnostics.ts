@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
-import { AuthService } from '../../providers/AuthProvider';
 import { SlidesPage } from '../slides/slide';
 
 @Component({
@@ -9,7 +8,7 @@ import { SlidesPage } from '../slides/slide';
 })
 export class DiagnosticsPage {
 
-	constructor(public navCtrl: NavController, private auth: AuthService, public modalCtrl: ModalController) {
+	constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
 	}
 
 	goBack() {

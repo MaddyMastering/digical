@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ToastController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 import { AuthService, Role, User } from '../../providers/AuthProvider';
 import { DatabaseProvider } from '../../providers/DatabaseProvider';
 
@@ -12,7 +12,7 @@ export class RegisterPage {
     roles: Array<Role>;
     registerCredentials = { name: "", email: "", password: "", type: Role.USER };
 
-    constructor(private nav: NavController, private auth: AuthService, private db: DatabaseProvider, private toastCtrl: ToastController) {
+    constructor(private auth: AuthService, private db: DatabaseProvider, private toastCtrl: ToastController) {
         this.roles = this.auth.getRoles();
     }
 

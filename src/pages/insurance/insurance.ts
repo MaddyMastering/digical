@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AuthService } from '../../providers/AuthProvider';
 
 @Component({
 	selector: 'insurance-page',
@@ -8,7 +7,7 @@ import { AuthService } from '../../providers/AuthProvider';
 })
 export class InsurancePage {
 	
-	constructor(public navCtrl: NavController, private auth: AuthService) {
+	constructor(public navCtrl: NavController) {
 	}
 
 	goBack() {

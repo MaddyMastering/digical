@@ -1,17 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController, MenuController, Events, Tabs } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 import { ProfilePage } from '../profile/profile';
-import { AuthService, Role, User } from '../../providers/AuthProvider';
-import { LoginPage } from '../login/login';
-import { QrCodePage } from '../qr-code/qrCode';
-import { PrescriptionPage } from '../prescriptions/prescriptions';
+import { AuthService, User } from '../../providers/AuthProvider';
 import { RecordsPage } from '../records/records';
-import { VaccinationPage } from '../vaccinations/vaccination';
-import { DiagnosticsPage } from '../diagnostics/diagnostics';
-import { InsurancePage } from '../insurance/insurance';
-import { FitbitPage } from '../fitbit/fitbit';
-import { DatabaseProvider } from '../../providers/DatabaseProvider';
 import { ProductPage } from '../products/products';
 import { NotificationPage } from '../notifications/notifications';
 
@@ -23,7 +15,7 @@ export class HomePage {
 	userData: User;
 	qrData: string = null;
 
-	constructor(private nav: NavController, private events: Events, private auth: AuthService, private db: DatabaseProvider) {
+	constructor(private nav: NavController, private auth: AuthService) {
 		this.userData = this.auth.getUserInfo();
 		this.qrData = JSON.stringify(this.userData);
 	}

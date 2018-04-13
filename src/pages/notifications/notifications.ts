@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, ModalController } from 'ionic-angular';
-import { AuthService } from '../../providers/AuthProvider';
 import { DescriptionPage } from '../description/description';
 
 @Component({

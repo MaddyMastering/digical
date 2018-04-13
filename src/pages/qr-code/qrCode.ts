@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AuthService, User } from '../../providers/AuthProvider';
 import { ProductPage } from '../products/products';
-import { HomePage } from '../home/home';
 
 @Component({
 	selector: 'qr-code',

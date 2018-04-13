@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, LoadingController, Loading, ToastController } from 'ionic-angular';
 import { AuthService, Role, User } from '../../providers/AuthProvider';
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
 import { HomeDoctorPage } from '../home/homeDoctor';
-import { DatabaseProvider } from '../../providers/DatabaseProvider';
 
 @Component({
 	selector: 'page-login',
@@ -14,10 +13,10 @@ export class LoginPage {
 	loading: Loading;
 	roles: Array<Role>;
 	submitted = false;
-	
+
 	loginCredentials = { email: null, password: null };
 
-	constructor(private nav: NavController, private auth: AuthService, private loadingCtrl: LoadingController, private db: DatabaseProvider, private toastCtrl: ToastController) {
+	constructor(private nav: NavController, private auth: AuthService, private loadingCtrl: LoadingController, private toastCtrl: ToastController) {
 		this.loading = this.loadingCtrl.create({ content: 'Please wait...', dismissOnPageChange: true });
 		this.roles = this.auth.getRoles();
 	}
