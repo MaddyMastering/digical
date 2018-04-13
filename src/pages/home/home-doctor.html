@@ -1,40 +1,31 @@
 <ion-header>
-        <ion-navbar>
-            <button ion-button icon-only menuToggle>
-                <ion-icon name="menu"></ion-icon>
+    <ion-navbar>
+        <ion-title>
+            Digical
+        </ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="goTo('profiles')">
+                <ion-icon name="contact"></ion-icon>
             </button>
-            <ion-title>
-                Digical
-            </ion-title>
-        </ion-navbar>
-    </ion-header>
-    
-    <!-- home page content -->
-    <ion-content class="home">
-        <ion-tabs [selectedIndex]="selectedTab">
-            <ion-tab tabIcon="home" tabTitle="Home" [root]="tab1"></ion-tab>
-            <ion-tab [rootParams]="param" tabIcon="qr-scanner" tabTitle="Scan" [root]="tab2"></ion-tab>
-            <!-- <ion-tab tabIcon="list-box" tabTitle="Records" [root]="tab3"></ion-tab> -->
-        </ion-tabs>
-    </ion-content>
-    
-    <ion-menu [content]="doctorContent">
-        <ion-content>
-            <ion-row>
-                <ion-col class="profile">
-                    <ion-fab bottom right>
-                        <img ion-fab [src]="this.currentProfile.image" />
-                    </ion-fab>
-                    <ion-label class="profile-name">{{this.currentProfile.name}}</ion-label>
-                </ion-col>
-            </ion-row>
-            <ion-list no-lines>
-                <button ion-item> Vaccinations </button>
-                <button ion-item> Prescriptions</button>
-                <button ion-item> Diagnostics </button>
-                <button ion-item (click)="logout()"> Logout</button>
-            </ion-list>
-        </ion-content>
-    </ion-menu>
-    
-    <ion-nav #doctorContent [root]="rootPage"></ion-nav>
+            <button ion-button icon-only (click)="goTo('notifications')">
+                <ion-badge color="accent">10</ion-badge>
+                <ion-icon name="notifications"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<!-- home page content -->
+<ion-content padding style="text-align: center;">
+    <ion-row style="padding-top: 10%;padding-bottom: 10%;">
+        <ion-col col-3></ion-col>
+        <ion-col col-6>
+            <ion-card>
+                <ngx-qrcode [qrc-value]="qrData"></ngx-qrcode>
+            </ion-card>
+        </ion-col>
+        <ion-col col-3></ion-col>
+    </ion-row>
+
+    <button ion-button class="submit-btn" (click)="scan()" type="submit">Scan</button>
+</ion-content>

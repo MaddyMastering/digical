@@ -14,3 +14,36 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+button {
+	ion-badge {
+		position: absolute;
+		top: -0.2rem;
+		right: -0.2rem;
+        opacity: 0.9;
+        padding: 2px 6px;
+
+		& ~ ion-icon {
+			margin-right: 1.2rem;
+		}
+    }
+    
+    .badge-md {
+        border-radius: 30px;
+    }
+}
+
+.item-md {
+	padding-left: 0px;
+}
+
+.label-md {
+	padding-left: 16px;
+}
+
+.read {
+	color: lightgray;
+}
+
+.button-md {
+	border-radius: 20px;
+}

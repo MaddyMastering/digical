@@ -1,45 +1,28 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, MenuController, Events, Tabs } from 'ionic-angular';
 
-import { AuthService } from '../../providers/AuthProvider';
+import { AuthService, User } from '../../providers/AuthProvider';
 import { LoginPage } from '../login/login';
-import { QrScanPage } from '../qr-home/qrScan';
-import { QrCodePage } from '../qr-home/qrCode';
+import { QrScanPage } from '../scan/scan';
+import { QrCodePage } from '../qr-code/qrCode';
+import { NotificationPage } from '../notifications/notifications';
+import { ProfilePage } from '../profile/profile';
 
 @Component({
 	selector: 'page-home-doctor',
 	templateUrl: 'home-doctor.html'
 })
 export class HomeDoctorPage {
-	@ViewChild(Tabs) tabs: Tabs;
-
-	tab1: any;
-	tab2: any;
-	param: any;
-	selectedTab: number;
-	currentProfile: any;
+	userData: User;
+	qrData: string = null;
 
 	constructor(private nav: NavController, private menuCtrl: MenuController, private events: Events, private auth: AuthService) {
-		this.tab1 = QrCodePage;
-		this.tab2 = QrScanPage;
-		this.selectedTab = 0;
-		this.currentProfile = this.auth.getCurrentProfile();
-
-		this.events.subscribe("change-tab", (tab, data) => {
-			this.param = data;
-			this.tabs.select(tab);
-		});
+		this.userData = this.auth.getUserInfo();
+		this.qrData = JSON.stringify(this.userData);
 	}
 
-	ionViewDidEnter() {
-		this.currentProfile = this.auth.getCurrentProfile();
-	}
-
-	ionViewDidLeave() {
-		this.menuCtrl.close();
-	}
-
-	public goTo(page) {
+	scan() {
+		this.nav.push(QrScanPage);
 	}
 
 	public logout() {
@@ -47,5 +30,13 @@ export class HomeDoctorPage {
 			this.menuCtrl.enable(false)
 			this.nav.setRoot(LoginPage);
 		});
+	}
+
+	goTo(page) {
+		if (page === "notifications") {
+			this.nav.push(NotificationPage);
+		} else if (page === "profiles") {
+			this.nav.push(ProfilePage);
+		}
 	}
 }

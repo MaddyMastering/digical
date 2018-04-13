@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, Events, ModalController } from 'ionic-angular';
 import { AuthService } from '../../providers/AuthProvider';
 import { DescriptionPage } from '../description/description';
+import { QrScanPage } from '../scan/scan';
 
 @Component({
     selector: 'page-records',
@@ -17,7 +18,8 @@ export class RecordsPage {
     }
 
     goTo(item) {
-        this.events.publish("change-tab", 1, item);
+        let modal = this.modalCtrl.create(QrScanPage, { data: item });
+        modal.present();    
     }
 
     showDescription(name, title) {

@@ -5,35 +5,36 @@
 </ion-header>
 
 <ion-content class="login-content" padding>
-    <div class="login-box">
-
-        <ion-row>
-            <ion-col>
+    <ion-row>
+        <form #registerForm="ngForm" col-12 (ngSubmit)="submitForm()">
+            <ion-col col-12>
                 <ion-list inset>
 
                     <ion-item>
-                        <ion-input type="text" placeholder="Email" [(ngModel)]="registerCredentials.email" required></ion-input>
+                        <ion-input name="name" #name="ngModel" type="text" placeholder="Name" [(ngModel)]="registerCredentials.name" required></ion-input>
                     </ion-item>
 
                     <ion-item>
-                        <ion-input type="password" placeholder="Password" [(ngModel)]="registerCredentials.password" required></ion-input>
+                        <ion-input name="email" #email="ngModel" type="email" placeholder="Email" [(ngModel)]="registerCredentials.email" pattern="[^ @]*@[^ @]*"
+                            required></ion-input>
                     </ion-item>
 
-                    <ion-item style="padding-left: 8px">
-                        <ion-label>Role</ion-label>
-                        <ion-select [(ngModel)]="registerCredentials.type">
+                    <ion-item>
+                        <ion-input name="password" #password="ngModel" type="password" placeholder="Password" [(ngModel)]="registerCredentials.password"
+                            required></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label style="margin-left: -8px;">Role</ion-label>
+                        <ion-select name="role" #role="ngModel" [(ngModel)]="registerCredentials.type">
                             <ion-option *ngFor="let role of roles" value={{role}}>{{role}}</ion-option>
                         </ion-select>
                     </ion-item>
 
                 </ion-list>
             </ion-col>
-        </ion-row>
 
-        <ion-row>
-            <ion-col class="signup-col">
-                <button ion-button class="submit-btn" full type="submit" (click)="register()">Register</button>
-            </ion-col>
-        </ion-row>
-    </div>
+            <button ion-button class="submit-btn" [disabled]="!registerForm.form.valid" full type="submit">Register</button>
+        </form>
+    </ion-row>
 </ion-content>

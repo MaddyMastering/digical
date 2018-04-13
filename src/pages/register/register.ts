@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
-import { AuthService, Role } from '../../providers/AuthProvider';
+import { NavController, AlertController, ToastController } from 'ionic-angular';
+import { AuthService, Role, User } from '../../providers/AuthProvider';
+import { DatabaseProvider } from '../../providers/DatabaseProvider';
 
 @Component({
     selector: 'page-register',
@@ -9,36 +10,34 @@ import { AuthService, Role } from '../../providers/AuthProvider';
 export class RegisterPage {
     createSuccess = false;
     roles: Array<Role>;
-    registerCredentials = { email: '', password: '', type: '' };
+    registerCredentials = { name: "", email: "", password: "", type: Role.USER };
 
-    constructor(private nav: NavController, private auth: AuthService, private alertCtrl: AlertController) {
+    constructor(private nav: NavController, private auth: AuthService, private db: DatabaseProvider, private toastCtrl: ToastController) {
         this.roles = this.auth.getRoles();
     }
 
-    public register() {
-        this.auth.register(this.registerCredentials).subscribe((success) => {
-            this.showPopup("Success", "Account created.");
-        }, (error) => {
-            this.showPopup("Error", "Please try again.");
+    public register(registerCredentials: any) {
+        let user = new User(registerCredentials.name, registerCredentials.email, registerCredentials.password, registerCredentials.type);
+
+        this.db.registerUser(user).then((data) => {
+            this.registerCredentials = { name: "", email: "", password: "", type: Role.USER };
+            this.showToast("Account created.");
+        }).catch((err) => {
+            this.showToast("Please try again later.");
         });
     }
 
-    showPopup(title, text) {
-        let alert = this.alertCtrl.create({
-            title: title,
-            subTitle: text,
-            buttons: [
-                {
-                    text: 'OK',
-                    handler: data => {
-                        if (this.createSuccess) {
-                            this.nav.popToRoot();
-                        }
-                    }
-                }
-            ]
+    private showToast(text) {
+        const toast = this.toastCtrl.create({
+            message: text,
+            showCloseButton: true,
+            closeButtonText: 'Ok'
         });
 
-        alert.present();
+        toast.present();
+    }
+
+    submitForm() {
+        this.register(this.registerCredentials);
     }
 }

@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Products
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-row>
+        <ion-col col-6>
+            <ion-card style="text-align: center;" (click)="goTo('vaccination')">
+                <img src="assets/imgs/vaccination.png" style="width: 50%;margin-left: 25px;" />
+                <ion-label>Vaccination</ion-label>
+            </ion-card>
+        </ion-col>
+        <ion-col col-6>
+            <ion-card style="text-align: center;" (click)="goTo('prescription')">
+                <img src="assets/imgs/prescription.png" style="width: 50%;margin-left: 25px;" />
+                <ion-label>Prescription</ion-label>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col col-6>
+            <ion-card style="text-align: center;" (click)="goTo('diagnostics')">
+                <img src="assets/imgs/diagnostics.png" style="width: 50%;margin-left: 25px;" />
+                <ion-label>Diagnostics</ion-label>
+            </ion-card>
+        </ion-col>
+        <ion-col col-6>
+            <ion-card style="text-align: center;" (click)="goTo('insurance')">
+                <img src="assets/imgs/insurance.png" style="width: 50%;margin-left: 30px;" />
+                <ion-label>Insurance</ion-label>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+
+    <ion-row>
+        <ion-col col-6>
+            <ion-card style="text-align: center;" (click)="goTo('fitbit')">
+                <img src="assets/imgs/fitbit.png" style="width: 50%;margin-left: 30px;" />
+                <ion-label>Fitbit</ion-label>
+            </ion-card>
+        </ion-col>
+        <ion-col col-6>
+            <ion-card style="text-align: center;">
+                <img src="assets/imgs/stem_cell.png" style="width: 50%;margin-left: 30px;" />
+                <ion-label>Stem Cell Report</ion-label>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+
+</ion-content>

@@ -2,60 +2,41 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, MenuController, Events, Tabs } from 'ionic-angular';
 
 import { ProfilePage } from '../profile/profile';
-import { AuthService } from '../../providers/AuthProvider';
+import { AuthService, Role, User } from '../../providers/AuthProvider';
 import { LoginPage } from '../login/login';
-import { QrScanPage } from '../qr-home/qrScan';
-import { QrCodePage } from '../qr-home/qrCode';
+import { QrCodePage } from '../qr-code/qrCode';
 import { PrescriptionPage } from '../prescriptions/prescriptions';
 import { RecordsPage } from '../records/records';
+import { VaccinationPage } from '../vaccinations/vaccination';
+import { DiagnosticsPage } from '../diagnostics/diagnostics';
+import { InsurancePage } from '../insurance/insurance';
+import { FitbitPage } from '../fitbit/fitbit';
+import { DatabaseProvider } from '../../providers/DatabaseProvider';
+import { ProductPage } from '../products/products';
+import { NotificationPage } from '../notifications/notifications';
 
 @Component({
 	selector: 'page-home',
 	templateUrl: 'home.html'
 })
 export class HomePage {
-	@ViewChild(Tabs) tabs: Tabs;
+	userData: User;
+	qrData: string = null;
 
-	tab1: any;
-	tab2: any;
-	tab3: any;
-	param: any;
-	selectedTab: number;
-	currentProfile: any;
-
-	constructor(private nav: NavController, private menuCtrl: MenuController, private events: Events, private auth: AuthService) {
-		this.tab1 = QrCodePage;
-		this.tab2 = QrScanPage;
-		this.tab3 = RecordsPage;
-		this.selectedTab = 0;
-		this.currentProfile = this.auth.getCurrentProfile();
-
-		this.events.subscribe("change-tab", (tab, data) => {
-			this.param = data;
-			this.tabs.select(tab);
-		});
+	constructor(private nav: NavController, private events: Events, private auth: AuthService, private db: DatabaseProvider) {
+		this.userData = this.auth.getUserInfo();
+		this.qrData = JSON.stringify(this.userData);
 	}
 
-	ionViewDidEnter() {
-		this.currentProfile = this.auth.getCurrentProfile();
-	}
-
-	ionViewDidLeave() {
-		this.menuCtrl.close();
-	}
-
-	public goTo(page) {
-		if (page === "profile") {
+	goTo(page) {
+		if (page === "notifications") {
+			this.nav.push(NotificationPage);
+		} else if (page === "profiles") {
 			this.nav.push(ProfilePage);
-		} else if (page === "prescription") {
-			this.nav.push(PrescriptionPage);
+		} else if (page === "products") {
+			this.nav.push(ProductPage);
+		} else if (page === "records") {
+			this.nav.push(RecordsPage);
 		}
-	}
-
-	public logout() {
-		this.auth.logout().subscribe(() => {
-			this.menuCtrl.enable(false)
-			this.nav.setRoot(LoginPage);
-		});
 	}
 }

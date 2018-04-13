@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AuthService } from '../../providers/AuthProvider';
+import { LoginPage } from '../login/login';
 
 @Component({
 	selector: 'page-profile',
@@ -22,5 +23,11 @@ export class ProfilePage {
 	updateProfile(profile: any) {
 		this.currentProfile = profile;
 		this.auth.setCurrentProfile(profile);
+	}
+
+	public logout() {
+		this.auth.logout().subscribe(() => {
+			this.navCtrl.setRoot(LoginPage);
+		});
 	}
 }

@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Digical
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-row text-center *ngIf="!scannedData.scanned">
+        <ion-col col-12>
+            <ion-list inset>
+                <ion-item>
+                    <ion-label>Add</ion-label>
+                    <ion-select [(ngModel)]="selectedRole">
+                        <ion-option value="{{role}}" *ngFor="let role of roles">{{role}}</ion-option>
+                    </ion-select>
+                </ion-item>
+            </ion-list>
+        </ion-col>
+        <ion-col col-12>
+            <ion-icon name="camera" style="font-size: 15em"></ion-icon>
+        </ion-col>
+        <br />
+        <ion-col col-12>
+            <button ion-button full (click)="scan()">Scan</button>
+        </ion-col>
+    </ion-row>
+
+    <ion-row text-center *ngIf="scannedData.scanned">
+        <ion-col col-12 style="margin-top: 20%;">
+            <img [src]="scannedData.imageUrl" style="border-radius: 50%;" />
+            <ion-list inset style="padding-top: 5%;">
+                <ion-item>
+                    <ion-label>{{scannedData.name}}</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-label>{{scannedData.email}}</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-label>{{scannedData.role}}</ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-col>
+        <ion-col col-12>
+            <button ion-button full (click)="save()">Save</button>
+        </ion-col>
+    </ion-row>
+</ion-content>
